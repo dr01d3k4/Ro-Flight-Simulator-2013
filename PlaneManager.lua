@@ -15,4 +15,9 @@ getAllPlaneNames = function()
   end)()
 end
 _G.getAllPlaneNames = getAllPlaneNames
+local getPlaneFromName
+getPlaneFromName = function(name)
+  return allPlanes:findFirstChild(name)
+end
+_G.getPlaneFromName = getPlaneFromName
 _G.planeManagerLoaded = true

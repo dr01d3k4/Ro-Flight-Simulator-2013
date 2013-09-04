@@ -3,7 +3,7 @@ while not (_G.loadedMenu and _G.Page and _G.ScrollingFrame and _G.planeManagerLo
 end
 local rgbColour, setCurrentMenuPage, createTitle, tweenTime, tweenExtra, createBackButton, getAllPlaneNames = _G.rgbColour, _G.setCurrentMenuPage, _G.createTitle, _G.tweenTime, _G.tweenExtra, _G.createBackButton, _G.getAllPlaneNames
 do
-  local titleHeight, spacing, scrollingFrameTop, scrollingFrameWidth, backButtonSize, backButtonPosition
+  local titleHeight, spacing, scrollingFrameTop, scrollingFrameWidth, scrollingFrameHeight, backButtonSize, backButtonPosition
   local _parent_0 = _G.Page
   local _base_0 = {
     initialize = function(self)
@@ -24,7 +24,7 @@ do
       do
         local _with_0 = Instance.new("Frame", self.background)
         _with_0.Name = "ScrollingFrame"
-        _with_0.Size = UDim2.new(scrollingFrameWidth, 0, 0, 250)
+        _with_0.Size = UDim2.new(scrollingFrameWidth, 0, scrollingFrameHeight, 0)
         _with_0.Position = UDim2.new((1 - scrollingFrameWidth) / 2, 0, scrollingFrameTop, 0)
         _with_0.BackgroundTransparency = 1
         baseFrame = _with_0
@@ -60,6 +60,9 @@ do
       local onClickFunction
       onClickFunction = function(index, item, button)
         local realName = itemList[index]
+        if self.childPage and self.childPage.planeName and self.childPage.planeName == realName then
+          return 
+        end
         return self:setChildPage(_G.LiverySelectPage, self.background, realName)
       end
       self.scrollingFrame = _G.ScrollingFrame(baseFrame, newItemList, itemButton, onClickFunction)
@@ -92,15 +95,6 @@ do
         end
         return setCurrentMenuPage(_G.MainMenuPage)
       end))
-      local setScrollFrameSize
-      setScrollFrameSize = function()
-        if self.tweening then
-          return 
-        end
-        self.scrollingFrame.baseFrame.Size = UDim2.new(scrollingFrameWidth, 0, (self.backButton.AbsolutePosition.Y / self.background.AbsoluteSize.Y) - spacing - (titleHeight + spacing), 0)
-      end
-      setScrollFrameSize()
-      self.background.Changed:connect(setScrollFrameSize)
       self.initialized = true
     end,
     tweenIn = function(self)
@@ -110,9 +104,8 @@ do
       self.tweening = true
       self.title.Position = UDim2.new(0, 0, -titleHeight, -tweenExtra)
       self.scrollingFrame.baseFrame.Visible = false
-      local scrollingFrameHeight = self.scrollingFrame.baseFrame.Size.Y.Scale
       self.scrollingFrame.baseFrame.Size = UDim2.new(scrollingFrameWidth, 0, 0, 0)
-      self.backButton.Position = UDim2.new(backButtonPosition.X.Scale, backButtonPosition.X.Offset, 1, self.backButton.AbsoluteSize.Y + tweenExtra)
+      self.backButton.Position = UDim2.new(backButtonPosition.X.Scale, 0, 1 + backButtonSize.Y.Scale, 0)
       self.title:TweenPosition(UDim2.new(0, 0, 0, 0), "In", "Quad", tweenTime, true)
       wait(tweenTime - 0.1)
       self.scrollingFrame.baseFrame.Visible = true
@@ -196,8 +189,9 @@ do
   spacing = 0.02
   scrollingFrameTop = titleHeight + spacing
   scrollingFrameWidth = 0.9
-  backButtonSize = UDim2.new(0, 66, 0, 30)
-  backButtonPosition = UDim2.new(0.95, -66, 1, -40)
+  scrollingFrameHeight = 0.8
+  backButtonSize = UDim2.new(0.4, 0, 0.05, 0)
+  backButtonPosition = UDim2.new(0.55, 0, 0.93, 0)
   if _parent_0 and _parent_0.__inherited then
     _parent_0.__inherited(_parent_0, _class_0)
   end
