@@ -20,6 +20,7 @@ menuBackgroundFrame = with Instance.new "Frame", menuScreenGui
 	.Size = UDim2.new 0, 0, 1, 0
 	.BackgroundColor3 = rgbColour 32, 32, 32
 	.BackgroundTransparency = 0.3
+_G.menuBackgroundFrame = menuBackgroundFrame
 
 -- Current page
 local setCurrentMenuPage

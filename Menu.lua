@@ -29,6 +29,7 @@ do
   _with_0.BackgroundTransparency = 0.3
   menuBackgroundFrame = _with_0
 end
+_G.menuBackgroundFrame = menuBackgroundFrame
 local setCurrentMenuPage
 do
   local currentPage = nil
