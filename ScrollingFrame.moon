@@ -115,42 +115,6 @@ class _G.ScrollingFrame
 				scrollBarDragging = false
 				@updateScrollList!
 
-
-			-- prevY = 0
-			-- fixScrollBarPosition = ->
-			-- 	return unless @totalHeight > @visibleAmount
-			-- 	if .Position.Y.Offset < @scrollButtonHeight
-			-- 		.Position = UDim2.new 0, 0, 0, @scrollButtonHeight
-			-- 	if .Position.Y.Offset + .Size.Y.Offset > @baseFrame.AbsoluteSize.y - @scrollButtonHeight
-			-- 		.Position = UDim2.new 0, 0, 0, @baseFrame.AbsoluteSize.y - @scrollButtonHeight - .Size.Y.Offset
-			-- 	yPos = .Position.Y.Offset - @scrollButtonHeight
-			-- 	@scrollAmount = @scrollHeight * (yPos / @maxScrollBarAmount)
-			-- 	@updateScrollList!
-
-			-- .MouseButton1Down\connect (x, y) ->
-			-- 	return unless @totalHeight > @visibleAmount
-			-- 	prevY = y
-			-- 	scrollBarDragging = true
-			-- 	fixScrollBarPosition!
-
-			-- .MouseButton1Up\connect ->
-			-- 	return unless @totalHeight > @visibleAmount
-			-- 	scrollBarDragging = false
-			-- 	fixScrollBarPosition!
-
-			-- mouse = game.Players.LocalPlayer\GetMouse!
-
-			-- mouse.Move\connect ->
-			-- 	return unless scrollBarDragging and @totalHeight > @visibleAmount
-			-- 	deltaY = mouse.Y - prevY
-			-- 	.Position = UDim2.new 1 - @scrollBarWidth, 0, 0, .Position.Y.Offset + deltaY
-			-- 	prevY = mouse.Y
-			-- 	fixScrollBarPosition!
-
-			-- mouse.Button1Up\connect ->
-			-- 	scrollBarDragging = false
-			-- 	fixScrollBarPosition!
-
 		baseFrame.Changed\connect @\calculateScrolling
 
 		@initScrolling = true
@@ -167,16 +131,6 @@ class _G.ScrollingFrame
 		else
 			@scrollBarHeight = 1
 
-		-- @maxScrollBarHeight = @scrollBarFrame.AbsoluteSize.y -- @baseFrame.AbsoluteSize.y - (@scrollButtonHeight * 2)
-
-		-- if @visibleAmount < @totalHeight
-		-- 	@scrollBarHeight = @maxScrollBarHeight * (@visibleAmount / @totalHeight)
-		-- else
-		-- 	@scrollAmount = 0
-		-- 	@scrollBarHeight = @maxScrollBarHeight
-
-		-- @maxScrollBarAmount = @maxScrollBarHeight - @scrollBarHeight
-
 		@scrollSpeed = (1 / @itemCount) * 4
 
 		@updateScrollList!
@@ -189,7 +143,7 @@ class _G.ScrollingFrame
 		if @scrollAmount > 1
 			@scrollAmount = 1
 
-		if @totalHeight < @visibleAmount -- or @scrollBarHeight == @maxScrollBarHeight
+		if @totalHeight < @visibleAmount
 			@scrollAmount = 0
 
 		for i = 1, @itemCount
@@ -199,7 +153,6 @@ class _G.ScrollingFrame
 
 		@scrollBar.Size = UDim2.new 1, 0, @scrollBarHeight, 0
 		@scrollBar.Position = UDim2.new 0, 0, (1 - @scrollBarHeight) * @scrollAmount, 0
-		-- @scrollButtonHeight + (@scrollAmount * (@maxScrollBarHeight / @totalHeight))
 
 	cleanUp: =>
 		@baseFrame\Destroy!

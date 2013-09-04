@@ -20,8 +20,6 @@ menuBackgroundFrame = with Instance.new "Frame", menuScreenGui
 	.Size = UDim2.new 0, 0, 1, 0
 	.BackgroundColor3 = rgbColour 32, 32, 32
 	.BackgroundTransparency = 0.3
-	.ClipsDescendants = true
-_G.menuBackgroundFrame = menuBackgroundFrame
 
 -- Current page
 local setCurrentMenuPage
@@ -31,7 +29,7 @@ do
 		if currentPage
 			currentPage\tweenOut!
 			currentPage\cleanUp!
-		currentPage = with pageClass!
+		currentPage = with pageClass menuBackgroundFrame
 			\initialize!
 			\tweenIn!
 	_G.setCurrentMenuPage = setCurrentMenuPage
@@ -59,7 +57,7 @@ do
 	buttonHoverOffset = 2
 
 	createButton = (name, text, parent, size, position, enter, leave, click) ->
-		button = Instance.new "TextButton", parent -- @background
+		button = Instance.new "TextButton", parent
 		with button
 			.Name = name
 			.Size = size

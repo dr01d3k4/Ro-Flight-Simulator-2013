@@ -1,7 +1,7 @@
 while not _G.loadedMenu do
   wait(0.1)
 end
-local menuScreenGui, menuBackgroundFrame = _G.menuScreenGui, _G.menuBackgroundFrame
+local menuScreenGui = _G.menuScreenGui
 do
   local _parent_0 = nil
   local _base_0 = {
@@ -28,11 +28,25 @@ do
       print("Tweening page out")
       self.tweening = false
     end,
+    setChildPage = function(self, pageClass)
+      if self.childPage then
+        self.childPage:tweenOut()
+        self.childPage:cleanUp()
+      end
+      do
+        local _with_0 = pageClass(self.background)
+        _with_0:initialize()
+        _with_0:tweenIn()
+        self.childPage = _with_0
+      end
+    end,
     cleanUp = function(self)
       if not self.initialized or self.cleanedUp or self.tweening then
         return 
       end
-      print("Cleaning up page")
+      if self.childPage then
+        self.childPage:cleanUp()
+      end
       if self.background then
         self.background:Destroy()
       end
@@ -44,22 +58,28 @@ do
     setmetatable(_base_0, _parent_0.__base)
   end
   local _class_0 = setmetatable({
-    __init = function(self, name)
+    __init = function(self, name, parent)
       assert(menuScreenGui, "Attempt to create " .. tostring(name) .. " before creating menuScreenGui")
       if self.background then
         self.background:Destroy()
       end
       do
-        local _with_0 = Instance.new("Frame", menuBackgroundFrame)
+        local _with_0 = Instance.new("Frame", parent)
         _with_0.BackgroundTransparency = 1
         _with_0.Name = name
         _with_0.Size = UDim2.new(1, 0, 1, 0)
         _with_0.BackgroundTransparency = 1
+        if parent == menuBackgroundFrame then
+          _with_0.Position = UDim2.new(0, 0, 0, 0)
+        else
+          _with_0.Position = UDim2.new(1, 0, 0, 0)
+        end
         self.background = _with_0
       end
       self.initialized = false
       self.cleanedUp = false
       self.tweening = false
+      self.childPage = nil
     end,
     __base = _base_0,
     __name = "Page",

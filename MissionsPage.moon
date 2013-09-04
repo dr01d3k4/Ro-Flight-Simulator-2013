@@ -4,8 +4,8 @@ while not (_G.loadedMenu and _G.Page)
 import setCurrentMenuPage from _G
 
 class _G.MissionsPage extends _G.Page
-	new: =>
-		super "Missions"
+	new: (parent) =>
+		super "Missions", parent
 
 	initialize: =>
 		return if @initialized or @cleanedUp or @tweening

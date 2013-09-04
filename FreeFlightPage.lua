@@ -1,7 +1,7 @@
-while not (_G.loadedMenu and _G.Page and _G.ScrollingFrame) do
+while not (_G.loadedMenu and _G.Page and _G.ScrollingFrame and _G.planeManagerLoaded) do
   wait(0.1)
 end
-local rgbColour, setCurrentMenuPage, createTitle, tweenTime, tweenExtra, createBackButton = _G.rgbColour, _G.setCurrentMenuPage, _G.createTitle, _G.tweenTime, _G.tweenExtra, _G.createBackButton
+local rgbColour, setCurrentMenuPage, createTitle, tweenTime, tweenExtra, createBackButton, getAllPlaneNames = _G.rgbColour, _G.setCurrentMenuPage, _G.createTitle, _G.tweenTime, _G.tweenExtra, _G.createBackButton, _G.getAllPlaneNames
 do
   local titleHeight, spacing, scrollingFrameTop, scrollingFrameWidth, backButtonSize, backButtonPosition
   local _parent_0 = _G.Page
@@ -29,24 +29,7 @@ do
         _with_0.BackgroundTransparency = 1
         baseFrame = _with_0
       end
-      local itemList = {
-        "Plane 1",
-        "Cessna 172",
-        "Boeing 737-800",
-        "Robin Something",
-        "Boeing 747-400",
-        "Airbus A350-900",
-        "Boeing 757",
-        "Lockheed Tristar",
-        "DC11",
-        "Concorde",
-        "Airbus A380",
-        "Boeing 727",
-        "Other plane",
-        "I need ideas",
-        "To test",
-        "The scrolling"
-      }
+      local itemList = getAllPlaneNames()
       table.sort(itemList)
       itemList = (function()
         local _accum_0 = { }
@@ -117,6 +100,14 @@ do
       end
       setScrollFrameSize()
       self.background.Changed:connect(setScrollFrameSize)
+      do
+        local _with_0 = self.background:Clone()
+        _with_0.Name = "LiveryBackground"
+        _with_0.Size = UDim2.new(0.15, 0, 1, 0)
+        _with_0.Position = UDim2.new(self.background.Size.X.Scale, 0, 0, 0)
+        _with_0.Parent = self.background
+        self.liveryBackground = _with_0
+      end
       self.initialized = true
     end,
     tweenIn = function(self)
@@ -176,9 +167,10 @@ do
     setmetatable(_base_0, _parent_0.__base)
   end
   local _class_0 = setmetatable({
-    __init = function(self)
-      _parent_0.__init(self, "FreeFlightPage")
+    __init = function(self, parent)
+      _parent_0.__init(self, "FreeFlightPage", parent)
       self.title, self.scrollingFrame, self.backButton = nil, nil, nil
+      self.liveryBackground = nil
     end,
     __base = _base_0,
     __name = "FreeFlightPage",

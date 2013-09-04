@@ -27,10 +27,8 @@ do
   _with_0.Size = UDim2.new(0, 0, 1, 0)
   _with_0.BackgroundColor3 = rgbColour(32, 32, 32)
   _with_0.BackgroundTransparency = 0.3
-  _with_0.ClipsDescendants = true
   menuBackgroundFrame = _with_0
 end
-_G.menuBackgroundFrame = menuBackgroundFrame
 local setCurrentMenuPage
 do
   local currentPage = nil
@@ -40,7 +38,7 @@ do
       currentPage:cleanUp()
     end
     do
-      local _with_0 = pageClass()
+      local _with_0 = pageClass(menuBackgroundFrame)
       _with_0:initialize()
       _with_0:tweenIn()
       currentPage = _with_0

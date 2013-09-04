@@ -1,7 +1,7 @@
-while not (_G.loadedMenu and _G.Page and _G.ScrollingFrame)
+while not (_G.loadedMenu and _G.Page and _G.ScrollingFrame and _G.planeManagerLoaded)
 	wait 0.1
 
-import rgbColour, setCurrentMenuPage, createTitle, tweenTime, tweenExtra, createBackButton from _G
+import rgbColour, setCurrentMenuPage, createTitle, tweenTime, tweenExtra, createBackButton, getAllPlaneNames from _G
 
 class _G.FreeFlightPage extends _G.Page
 	titleHeight = 0.09
@@ -11,9 +11,10 @@ class _G.FreeFlightPage extends _G.Page
 	backButtonSize = UDim2.new(0, 66, 0, 30)
 	backButtonPosition = UDim2.new(0.95, -66, 1, -40)
 
-	new: =>
-		super "FreeFlightPage"
+	new: (parent) =>
+		super "FreeFlightPage", parent
 		@title, @scrollingFrame, @backButton = nil, nil, nil
+		@liveryBackground = nil
 
 	initialize: =>
 		return if @initialized or @cleanedUp or @tweening
@@ -29,7 +30,8 @@ class _G.FreeFlightPage extends _G.Page
 			.Position = UDim2.new (1 - scrollingFrameWidth) / 2, 0, scrollingFrameTop, 0
 			.BackgroundTransparency = 1
 
-		itemList = {"Plane 1", "Cessna 172", "Boeing 737-800", "Robin Something", "Boeing 747-400", "Airbus A350-900", "Boeing 757", "Lockheed Tristar", "DC11", "Concorde", "Airbus A380", "Boeing 727", "Other plane", "I need ideas", "To test", "The scrolling"}
+		itemList = getAllPlaneNames! 
+		-- {"Plane 1", "Cessna 172", "Boeing 737-800", "Robin Something", "Boeing 747-400", "Airbus A350-900", "Boeing 757", "Lockheed Tristar", "DC11", "Concorde", "Airbus A380", "Boeing 727", "Other plane", "I need ideas", "To test", "The scrolling"}
 		table.sort itemList
 		itemList = [" "..item for item in *itemList]
 
@@ -70,6 +72,12 @@ class _G.FreeFlightPage extends _G.Page
 			@scrollingFrame.baseFrame.Size = UDim2.new scrollingFrameWidth, 0, (@backButton.AbsolutePosition.Y / @background.AbsoluteSize.Y) - spacing - (titleHeight + spacing), 0
 		setScrollFrameSize!
 		@background.Changed\connect setScrollFrameSize
+
+		@liveryBackground = with @background\Clone!
+			.Name = "LiveryBackground"
+			.Size = UDim2.new 0.15, 0, 1, 0
+			.Position = UDim2.new @background.Size.X.Scale, 0, 0, 0
+			.Parent = @background
 
 		@initialized = true
 

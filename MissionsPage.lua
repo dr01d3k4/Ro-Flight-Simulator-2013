@@ -28,8 +28,8 @@ do
     setmetatable(_base_0, _parent_0.__base)
   end
   local _class_0 = setmetatable({
-    __init = function(self)
-      return _parent_0.__init(self, "Missions")
+    __init = function(self, parent)
+      return _parent_0.__init(self, "Missions", parent)
     end,
     __base = _base_0,
     __name = "MissionsPage",

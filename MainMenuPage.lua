@@ -119,6 +119,9 @@ do
       if not self.initialized or self.cleanedUp or self.tweening then
         return 
       end
+      if self.childPage then
+        self.childPage:cleanUp()
+      end
       if self.title then
         self.title:Destroy()
       end
@@ -138,8 +141,8 @@ do
     setmetatable(_base_0, _parent_0.__base)
   end
   local _class_0 = setmetatable({
-    __init = function(self)
-      _parent_0.__init(self, "MainMenuPage")
+    __init = function(self, parent)
+      _parent_0.__init(self, "MainMenuPage", parent)
       self.title, self.buttonObjects = nil, { }
     end,
     __base = _base_0,

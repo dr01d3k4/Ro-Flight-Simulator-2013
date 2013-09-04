@@ -4,12 +4,12 @@ while not (_G.loadedMenu and _G.Page)
 import rgbColour, setCurrentMenuPage, createTitle, tweenTime, createButton, tweenExtra from _G
 
 class _G.MainMenuPage extends _G.Page
-	titleHeight = 0.275 -- 150
+	titleHeight = 0.275
 	buttonWidth = 0.8
 	buttonLeft = (1 - buttonWidth) / 2
 
-	new: =>
-		super "MainMenuPage"
+	new: (parent) =>
+		super "MainMenuPage", parent
 		@title, @buttonObjects = nil, { }
 
 	initialize: =>
@@ -21,8 +21,8 @@ class _G.MainMenuPage extends _G.Page
 
 		@buttonObjects = { }
 		buttonNames = [" - "..name for name in *{"Free Flight", "Missions", "ATC", "Passenger", "Help", "Options", "About"}]
-		buttonHeight = 0.05 -- 30
-		buttonSpacing = 0.03 -- 20
+		buttonHeight = 0.05
+		buttonSpacing = 0.03
 
 		yPos = titleHeight + buttonSpacing
 		for i = 1, #buttonNames
@@ -85,6 +85,8 @@ class _G.MainMenuPage extends _G.Page
 
 	cleanUp: =>
 		return if not @initialized or @cleanedUp or @tweening
+		if @childPage
+			@childPage\cleanUp!
 		@title\Destroy! if @title
 		button\Destroy! for button in *@buttonObjects
 		@background\Destroy! if @background
