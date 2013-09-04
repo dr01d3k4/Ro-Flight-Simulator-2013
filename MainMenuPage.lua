@@ -107,8 +107,6 @@ do
       if not self.initialized or self.cleanedUp or self.tweening then
         return 
       end
-      self:tweenOut()
-      self:cleanUp()
       local pageName = button .. "Page"
       if not _G[pageName] then
         pageName = "MainMenuPage"
@@ -118,9 +116,6 @@ do
     cleanUp = function(self)
       if not self.initialized or self.cleanedUp or self.tweening then
         return 
-      end
-      if self.childPage then
-        self.childPage:cleanUp()
       end
       if self.title then
         self.title:Destroy()

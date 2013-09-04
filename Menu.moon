@@ -7,9 +7,9 @@ playerGui = player.PlayerGui
 menuScreenGui = with Instance.new "ScreenGui", playerGui do .Name = "MenuScreenGui"
 _G.menuScreenGui = menuScreenGui
 
-tweenTime = 0.6
+tweenTime = 0.4
 _G.tweenTime = tweenTime
-_G.tweenExtra = 20
+_G.tweenExtra = 15
 
 rgbColour = (r, g, b) -> Color3.new r / 255, g / 255, b / 255
 _G.rgbColour = rgbColour
@@ -18,21 +18,36 @@ backgroundWidth = 0.2
 menuBackgroundFrame = with Instance.new "Frame", menuScreenGui
 	.Name = "Background"
 	.Size = UDim2.new 0, 0, 1, 0
+	.Position = UDim2.new 0, 0, 0, 0
 	.BackgroundColor3 = rgbColour 32, 32, 32
 	.BackgroundTransparency = 0.3
 _G.menuBackgroundFrame = menuBackgroundFrame
+_G.defaultBackgroundFrame = with menuBackgroundFrame\Clone! do .Size = UDim2.new backgroundWidth, 0, 1, 0
+
 
 -- Current page
 local setCurrentMenuPage
 do
 	currentPage = nil
+
+	waitForPageCleanUp = (page) ->
+		return if not page or page.cleanedUp
+		while not page.cleanedUp
+			page\cleanUp!
+			wait 0.1 if not page.cleanedUp
+
 	setCurrentMenuPage = (pageClass) ->
 		if currentPage
 			currentPage\tweenOut!
-			currentPage\cleanUp!
+			waitForPageCleanUp currentPage
+
+		pcall(-> child\Destroy!) for child in *menuBackgroundFrame\GetChildren!
+
 		currentPage = with pageClass menuBackgroundFrame
 			\initialize!
 			\tweenIn!
+
+	_G.waitForPageCleanUp = waitForPageCleanUp
 	_G.setCurrentMenuPage = setCurrentMenuPage
 
 -- Create title

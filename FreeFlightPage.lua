@@ -31,7 +31,7 @@ do
       end
       local itemList = getAllPlaneNames()
       table.sort(itemList)
-      itemList = (function()
+      local newItemList = (function()
         local _accum_0 = { }
         local _len_0 = 1
         local _list_0 = itemList
@@ -59,9 +59,10 @@ do
       end
       local onClickFunction
       onClickFunction = function(index, item, button)
-        return print("\"" .. tostring(item) .. "\" was clicked")
+        local realName = itemList[index]
+        return self:setChildPage(_G.LiverySelectPage, self.background, realName)
       end
-      self.scrollingFrame = _G.ScrollingFrame(baseFrame, itemList, itemButton, onClickFunction)
+      self.scrollingFrame = _G.ScrollingFrame(baseFrame, newItemList, itemButton, onClickFunction)
       local _list_0 = self.scrollingFrame.innerFrame:GetChildren()
       for _index_0 = 1, #_list_0 do
         local item = _list_0[_index_0]
@@ -100,14 +101,6 @@ do
       end
       setScrollFrameSize()
       self.background.Changed:connect(setScrollFrameSize)
-      do
-        local _with_0 = self.background:Clone()
-        _with_0.Name = "LiveryBackground"
-        _with_0.Size = UDim2.new(0.15, 0, 1, 0)
-        _with_0.Position = UDim2.new(self.background.Size.X.Scale, 0, 0, 0)
-        _with_0.Parent = self.background
-        self.liveryBackground = _with_0
-      end
       self.initialized = true
     end,
     tweenIn = function(self)
@@ -127,6 +120,9 @@ do
       wait(tweenTime - 0.2)
       self.backButton:TweenPosition(backButtonPosition, "In", "Quad", tweenTime, true)
       wait(tweenTime)
+      if self.childPage then
+        self.childPage:tweenIn()
+      end
       self.tweening = false
     end,
     tweenOut = function(self)
@@ -134,6 +130,9 @@ do
         return 
       end
       self.tweening = true
+      if self.childPage then
+        self.childPage:tweenOut()
+      end
       self.backButton:TweenPosition(UDim2.new(backButtonPosition.X.Scale, backButtonPosition.X.Offset, 1, self.backButton.AbsoluteSize.Y + tweenExtra), "Out", "Quad", tweenTime, true)
       wait(tweenTime - 0.2)
       self.scrollingFrame.baseFrame:TweenSize(UDim2.new(scrollingFrameWidth, 0, 0, 0), "Out", "Quad", tweenTime, true)
@@ -147,6 +146,7 @@ do
       if not self.initialized or self.cleanedUp or self.tweening then
         return 
       end
+      self:cleanUpChildPage()
       if self.title then
         self.title:Destroy()
       end

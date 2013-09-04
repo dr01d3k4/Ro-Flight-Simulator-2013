@@ -75,9 +75,7 @@ class _G.MainMenuPage extends _G.Page
 
 	menuButtonClicked: (button) =>
 		return if not @initialized or @cleanedUp or @tweening
-		@tweenOut!
-		@cleanUp!
-		
+
 		pageName = button.."Page"
 		if not _G[pageName]
 			pageName = "MainMenuPage"
@@ -85,8 +83,6 @@ class _G.MainMenuPage extends _G.Page
 
 	cleanUp: =>
 		return if not @initialized or @cleanedUp or @tweening
-		if @childPage
-			@childPage\cleanUp!
 		@title\Destroy! if @title
 		button\Destroy! for button in *@buttonObjects
 		@background\Destroy! if @background

@@ -11,9 +11,9 @@ do
   menuScreenGui = _with_0
 end
 _G.menuScreenGui = menuScreenGui
-local tweenTime = 0.6
+local tweenTime = 0.4
 _G.tweenTime = tweenTime
-_G.tweenExtra = 20
+_G.tweenExtra = 15
 local rgbColour
 rgbColour = function(r, g, b)
   return Color3.new(r / 255, g / 255, b / 255)
@@ -25,18 +25,43 @@ do
   local _with_0 = Instance.new("Frame", menuScreenGui)
   _with_0.Name = "Background"
   _with_0.Size = UDim2.new(0, 0, 1, 0)
+  _with_0.Position = UDim2.new(0, 0, 0, 0)
   _with_0.BackgroundColor3 = rgbColour(32, 32, 32)
   _with_0.BackgroundTransparency = 0.3
   menuBackgroundFrame = _with_0
 end
 _G.menuBackgroundFrame = menuBackgroundFrame
+do
+  local _with_0 = menuBackgroundFrame:Clone()
+  _with_0.Size = UDim2.new(backgroundWidth, 0, 1, 0)
+  _G.defaultBackgroundFrame = _with_0
+end
 local setCurrentMenuPage
 do
   local currentPage = nil
+  local waitForPageCleanUp
+  waitForPageCleanUp = function(page)
+    if not page or page.cleanedUp then
+      return 
+    end
+    while not page.cleanedUp do
+      page:cleanUp()
+      if not page.cleanedUp then
+        wait(0.1)
+      end
+    end
+  end
   setCurrentMenuPage = function(pageClass)
     if currentPage then
       currentPage:tweenOut()
-      currentPage:cleanUp()
+      waitForPageCleanUp(currentPage)
+    end
+    local _list_0 = menuBackgroundFrame:GetChildren()
+    for _index_0 = 1, #_list_0 do
+      local child = _list_0[_index_0]
+      pcall(function()
+        return child:Destroy()
+      end)
     end
     do
       local _with_0 = pageClass(menuBackgroundFrame)
@@ -45,6 +70,7 @@ do
       currentPage = _with_0
     end
   end
+  _G.waitForPageCleanUp = waitForPageCleanUp
   _G.setCurrentMenuPage = setCurrentMenuPage
 end
 do

@@ -1,25 +1,27 @@
 while not _G.loadedMenu
 	wait 0.1
 
-import menuScreenGui from _G
+import menuScreenGui, menuBackgroundFrame, defaultBackgroundFrame, waitForPageCleanUp from _G
 
 class _G.Page
 	new: (name, parent) =>
 		assert menuScreenGui, "Attempt to create #{name} before creating menuScreenGui"
 		@background\Destroy! if @background
-		@background = with Instance.new "Frame", parent
-			.BackgroundTransparency = 1
+		@background = with defaultBackgroundFrame\Clone!
 			.Name = name
+			.Parent = parent
 			.Size = UDim2.new 1, 0, 1, 0
-			.BackgroundTransparency = 1
 			if parent == menuBackgroundFrame
 				.Position = UDim2.new 0, 0, 0, 0
+				.BackgroundTransparency = 1
 			else
 				.Position = UDim2.new 1, 0, 0, 0
+				.BackgroundTransparency = menuBackgroundFrame.BackgroundTransparency
 		@initialized = false
 		@cleanedUp = false
 		@tweening = false
 		@childPage = nil
+		@settingChildPage = false
 
 	initialize: =>
 		return if @initialized or @cleanedUp or @tweening
@@ -38,17 +40,22 @@ class _G.Page
 		print "Tweening page out"
 		@tweening = false
 
-	setChildPage: (pageClass) =>
+	setChildPage: (pageClass, ...) =>
+		return if @settingChildPage
+		@settingChildPage = true
 		if @childPage
 			@childPage\tweenOut!
-			@childPage\cleanUp!
-		@childPage = with pageClass @background
+			@cleanUpChildPage!
+		@childPage = with pageClass ...
 			\initialize!
 			\tweenIn!
+		@settingChildPage = false
+
+	cleanUpChildPage: =>
+		waitForPageCleanUp @childPage
 
 	cleanUp: =>
 		return if not @initialized or @cleanedUp or @tweening
-		if @childPage
-			@childPage\cleanUp!
+		@cleanUpChildPage!
 		@background\Destroy! if @background
 		@cleanedUp = true

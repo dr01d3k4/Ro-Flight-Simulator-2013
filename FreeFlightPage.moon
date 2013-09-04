@@ -33,7 +33,7 @@ class _G.FreeFlightPage extends _G.Page
 		itemList = getAllPlaneNames! 
 		-- {"Plane 1", "Cessna 172", "Boeing 737-800", "Robin Something", "Boeing 747-400", "Airbus A350-900", "Boeing 757", "Lockheed Tristar", "DC11", "Concorde", "Airbus A380", "Boeing 727", "Other plane", "I need ideas", "To test", "The scrolling"}
 		table.sort itemList
-		itemList = [" "..item for item in *itemList]
+		newItemList = [" "..item for item in *itemList]
 
 		itemButton = with Instance.new "TextButton"
 			.Name = "Button"
@@ -48,9 +48,10 @@ class _G.FreeFlightPage extends _G.Page
 			.BorderColor3 = rgbColour 255, 255, 255
 
 		onClickFunction = (index, item, button) ->
-			print "\"#{item}\" was clicked"
+			realName = itemList[index]
+			@setChildPage _G.LiverySelectPage, @background, realName
 
-		@scrollingFrame = _G.ScrollingFrame baseFrame, itemList, itemButton, onClickFunction
+		@scrollingFrame = _G.ScrollingFrame baseFrame, newItemList, itemButton, onClickFunction
 
 		for item in *@scrollingFrame.innerFrame\GetChildren!
 			text = item.Text
@@ -73,12 +74,6 @@ class _G.FreeFlightPage extends _G.Page
 		setScrollFrameSize!
 		@background.Changed\connect setScrollFrameSize
 
-		@liveryBackground = with @background\Clone!
-			.Name = "LiveryBackground"
-			.Size = UDim2.new 0.15, 0, 1, 0
-			.Position = UDim2.new @background.Size.X.Scale, 0, 0, 0
-			.Parent = @background
-
 		@initialized = true
 
 	tweenIn: =>
@@ -98,14 +93,20 @@ class _G.FreeFlightPage extends _G.Page
 		@scrollingFrame.baseFrame\TweenSize UDim2.new(scrollingFrameWidth, 0, scrollingFrameHeight, 0), "In", "Quad", tweenTime, true
 		wait tweenTime - 0.2
 
-		@backButton\TweenPosition backButtonPosition, "In", "Quad", tweenTime, true
-
+		@backButton\TweenPosition backButtonPosition, "In", "Quad", tweenTime, true		
 		wait tweenTime
+
+		if @childPage
+			@childPage\tweenIn!
+
 		@tweening = false
 
 	tweenOut: =>
 		return if not @initialized or @cleanedUp or @tweening
 		@tweening = true
+
+		if @childPage
+			@childPage\tweenOut!
 
 		@backButton\TweenPosition UDim2.new(backButtonPosition.X.Scale, backButtonPosition.X.Offset, 1, @backButton.AbsoluteSize.Y + tweenExtra), "Out", "Quad", tweenTime, true
 		wait tweenTime - 0.2
@@ -121,6 +122,7 @@ class _G.FreeFlightPage extends _G.Page
 
 	cleanUp: =>
 		return if not @initialized or @cleanedUp or @tweening
+		@cleanUpChildPage!
 		@title\Destroy! if @title
 		@scrollingFrame\cleanUp! if @scrollingFrame
 		@backButton\Destroy! if @backButton

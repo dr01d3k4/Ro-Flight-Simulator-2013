@@ -1,7 +1,7 @@
 while not _G.loadedMenu do
   wait(0.1)
 end
-local menuScreenGui = _G.menuScreenGui
+local menuScreenGui, menuBackgroundFrame, defaultBackgroundFrame, waitForPageCleanUp = _G.menuScreenGui, _G.menuBackgroundFrame, _G.defaultBackgroundFrame, _G.waitForPageCleanUp
 do
   local _parent_0 = nil
   local _base_0 = {
@@ -28,25 +28,31 @@ do
       print("Tweening page out")
       self.tweening = false
     end,
-    setChildPage = function(self, pageClass)
+    setChildPage = function(self, pageClass, ...)
+      if self.settingChildPage then
+        return 
+      end
+      self.settingChildPage = true
       if self.childPage then
         self.childPage:tweenOut()
-        self.childPage:cleanUp()
+        self:cleanUpChildPage()
       end
       do
-        local _with_0 = pageClass(self.background)
+        local _with_0 = pageClass(...)
         _with_0:initialize()
         _with_0:tweenIn()
         self.childPage = _with_0
       end
+      self.settingChildPage = false
+    end,
+    cleanUpChildPage = function(self)
+      return waitForPageCleanUp(self.childPage)
     end,
     cleanUp = function(self)
       if not self.initialized or self.cleanedUp or self.tweening then
         return 
       end
-      if self.childPage then
-        self.childPage:cleanUp()
-      end
+      self:cleanUpChildPage()
       if self.background then
         self.background:Destroy()
       end
@@ -64,15 +70,16 @@ do
         self.background:Destroy()
       end
       do
-        local _with_0 = Instance.new("Frame", parent)
-        _with_0.BackgroundTransparency = 1
+        local _with_0 = defaultBackgroundFrame:Clone()
         _with_0.Name = name
+        _with_0.Parent = parent
         _with_0.Size = UDim2.new(1, 0, 1, 0)
-        _with_0.BackgroundTransparency = 1
         if parent == menuBackgroundFrame then
           _with_0.Position = UDim2.new(0, 0, 0, 0)
+          _with_0.BackgroundTransparency = 1
         else
           _with_0.Position = UDim2.new(1, 0, 0, 0)
+          _with_0.BackgroundTransparency = menuBackgroundFrame.BackgroundTransparency
         end
         self.background = _with_0
       end
@@ -80,6 +87,7 @@ do
       self.cleanedUp = false
       self.tweening = false
       self.childPage = nil
+      self.settingChildPage = false
     end,
     __base = _base_0,
     __name = "Page",

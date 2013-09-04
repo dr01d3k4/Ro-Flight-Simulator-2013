@@ -10,7 +10,6 @@ class _G.MissionsPage extends _G.Page
 	initialize: =>
 		return if @initialized or @cleanedUp or @tweening
 		@initialized = true
-		@cleanUp!
 		setCurrentMenuPage _G.MainMenuPage
 
 	cleanUp: =>
