@@ -33,7 +33,8 @@ class _G.LiverySelectPage extends _G.Page
 
 		plane = getPlaneFromName @planeName
 		sectionNames = [section.Name for section in *plane\GetChildren! when section\IsA("Model") and not isIgnoredSection(section.Name)]
-
+		table.sort sectionNames
+		
 		colourSelectorHeight = 0.03
 		colourSelectorSpacing = 0.015
 		colourSelectorLeftWidth = 0.4

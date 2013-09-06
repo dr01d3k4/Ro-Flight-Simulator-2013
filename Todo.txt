@@ -1,0 +1,53 @@
+Items marked with * are important (required to be done first)
+
+General:
+-* Remove character parts, sort out head
+-* Move camera somewhere
+
+- Build an airport
+- Scale down current plane and add engine block etc
+
+Main menu:
+- Have camera moving around the map?
+- Add random free flight button? Maybe not as free flight pages will have random buttons
+- Maybe add a statistics page? Total flight time, flight distance, average speed, most common plane etc. (yay for JSON storage!)
+
+Free flight:
+	Picking plane:
+	-* Move the camera away from the map
+	-* Copy the selected plane (use local parts?) so player can see what his colour scheme is
+	- Add randomize button for:
+		- Picking random plane
+		- Randomizing each colour
+	- Maybe add transparency + reflectance settings for each part (perhaps in the model, if findFirstChild("HasTransparency/Reflectance") so plane modeller can specify)
+	- Eventually add plane locked/unlocked when missions added
+
+	* Picking airport:
+	-* Scrolling frame on left with all airports (like pick plane)
+	-* Click airport to expand sub-page with spawn locations in airport
+	- When airport click, camera moves to it
+	- When spawn location clicked, local marker appears above it to show player where they picked
+	- Add randomize buttons
+	-* Add fly button
+	-* Spawn plane
+
+Missions:
+- Scrolling frame of missions (do some shading out/not show if not unlocked)
+- Click mission to expand sub-page with in-depth details of mission
+- Maybe have personal highscores on certain missions? Like time taken and stuff
+
+ATC:
+- Like picking airport, has scrolling frame of airports with current ATC count
+
+Passenger:
+- Scrolling frame of all people + their plane
+- Click person to move camera to it and follow
+- Menu on left folds away when on plane, hover on left (or have a button?) to expand
+- When expanded click a different person to go to it
+- Pilot gets notified about new passenger
+
+Options:
+- Keep this?
+
+Plane flying:
+-* Todo on the todo list: think of guis and controls for planes
