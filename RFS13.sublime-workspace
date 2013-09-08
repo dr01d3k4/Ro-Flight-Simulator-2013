@@ -1,0 +1,1287 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"player",
+				"playerGui"
+			],
+			[
+				"Cama",
+				"CameraSubject"
+			],
+			[
+				"section",
+				"sectionColourTexts"
+			],
+			[
+				"colou",
+				"colourSelectorFrame"
+			],
+			[
+				"colourS",
+				"colourSelectorHeight"
+			],
+			[
+				"colour",
+				"colourSelectorHeight"
+			],
+			[
+				"colourSelec",
+				"colourSelectorSpacing"
+			],
+			[
+				"planeName",
+				"planeNameLabel"
+			],
+			[
+				"plane",
+				"planeNameLabel"
+			],
+			[
+				"plan",
+				"planeNameLabel"
+			],
+			[
+				"wait",
+				"waitForPageCleanup"
+			],
+			[
+				"clean",
+				"cleanUpChildPage"
+			],
+			[
+				"cl",
+				"cleanUpChildPage"
+			],
+			[
+				"Bac",
+				"BackgroundColor3"
+			],
+			[
+				"scr",
+				"scrollingFrameWidth"
+			],
+			[
+				"anim",
+				"animateExtra"
+			],
+			[
+				"baseF",
+				"baseFrameWidth"
+			],
+			[
+				"max",
+				"maxScrollBarHeight"
+			],
+			[
+				"ini",
+				"initialized"
+			],
+			[
+				"in",
+				"initialize"
+			],
+			[
+				"Backgrou",
+				"BackgroundTransparency"
+			],
+			[
+				"menu",
+				"menuBackgroundFrame"
+			],
+			[
+				"Backgr",
+				"BackgroundTransparency"
+			],
+			[
+				"menuB",
+				"menuBackground"
+			],
+			[
+				"get",
+				"get_ratings_comments"
+			],
+			[
+				"Fu",
+				"FURNICULAR"
+			],
+			[
+				"most",
+				"mostImportantTravelMode"
+			],
+			[
+				"mostImpo",
+				"mostImportantTravelMode"
+			],
+			[
+				"json",
+				"jsonToString"
+			],
+			[
+				"ref",
+				"reformatGoogleMapData"
+			],
+			[
+				"j",
+				"jsonToString"
+			],
+			[
+				"g",
+				"readGoogleMapData"
+			],
+			[
+				"asse",
+				"assertIsNotNone"
+			],
+			[
+				"refor",
+				"test_reformatGoogleMapData"
+			],
+			[
+				"ur",
+				"urlopen"
+			],
+			[
+				"origi",
+				"originalRoute"
+			],
+			[
+				"angle",
+				"angleBetweenRays"
+			],
+			[
+				"project",
+				"projectionPlane"
+			],
+			[
+				"do",
+				"doCollision"
+			],
+			[
+				"mae",
+				"makeDerivative"
+			],
+			[
+				"initi",
+				"initialVel"
+			],
+			[
+				"for",
+				"for	for"
+			],
+			[
+				"cast",
+				"castSingleRay"
+			],
+			[
+				"view",
+				"viewDist"
+			],
+			[
+				"m",
+				"miniMapScale"
+			],
+			[
+				"sc",
+				"screenScale"
+			],
+			[
+				"deltaDi",
+				"deltaDistY"
+			],
+			[
+				"draw",
+				"drawRadiusPixelSquared"
+			],
+			[
+				"til",
+				"tileCollision"
+			],
+			[
+				"refer",
+				"referenceCount"
+			],
+			[
+				"shor",
+				"shorterThan"
+			],
+			[
+				"shorter",
+				"shorterThanOrEqualTo"
+			],
+			[
+				"rotate",
+				"rotateDegrees"
+			],
+			[
+				"distanceBw",
+				"distanceBetweenSquared"
+			],
+			[
+				"lengt",
+				"lengthSquared"
+			],
+			[
+				"norm",
+				"normalize"
+			],
+			[
+				"pub",
+				"public	public var"
+			],
+			[
+				"siz",
+				"size	size"
+			],
+			[
+				"fo",
+				"for	for"
+			],
+			[
+				"__",
+				"__newindex"
+			],
+			[
+				"loca",
+				"local"
+			],
+			[
+				"setu",
+				"setup	setup"
+			],
+			[
+				"sim",
+				"simpsonsRule"
+			],
+			[
+				"tbl",
+				"tblMetatable"
+			],
+			[
+				"groun",
+				"groundHeight"
+			],
+			[
+				"set",
+				"setLinearVelocity"
+			],
+			[
+				"midA",
+				"midAbsRelErr"
+			],
+			[
+				"trap",
+				"trapApprox"
+			],
+			[
+				"simp",
+				"simpAbsErr"
+			],
+			[
+				"trapA",
+				"trapAbsErr"
+			],
+			[
+				"extra",
+				"extrapolateTrapeziumToInfinity"
+			],
+			[
+				"rat",
+				"ratioOfDifferences"
+			],
+			[
+				"strip",
+				"stripWidth"
+			],
+			[
+				"mid",
+				"midpointRule"
+			],
+			[
+				"local",
+				"localfunction"
+			],
+			[
+				"loc",
+				"locv"
+			],
+			[
+				"line",
+				"love.graphics.line"
+			],
+			[
+				"load",
+				"love.load"
+			],
+			[
+				"fin",
+				"FindPartsInRegion3WithIgnoreList"
+			],
+			[
+				"debug",
+				"debug.getinfo"
+			],
+			[
+				"__m",
+				"__metatable"
+			],
+			[
+				"tabl",
+				"table.remove"
+			],
+			[
+				"matc",
+				"string.match"
+			],
+			[
+				"str",
+				"string.find"
+			],
+			[
+				"by",
+				"byte	:byte"
+			],
+			[
+				"co",
+				"coroutine.resume"
+			],
+			[
+				"ta",
+				"table.concat"
+			],
+			[
+				"table",
+				"table.concat	table.concat"
+			],
+			[
+				"et",
+				"setmetatable"
+			],
+			[
+				"mouse",
+				"mousereleased"
+			],
+			[
+				"key",
+				"keyreleased"
+			],
+			[
+				"jo",
+				"joystickreleased"
+			],
+			[
+				"joys",
+				"joystickpressed"
+			],
+			[
+				"su",
+				"string.sub"
+			],
+			[
+				"_",
+				"_VERSION"
+			],
+			[
+				"gsu",
+				"string.gsub"
+			],
+			[
+				"raw",
+				"rawset"
+			],
+			[
+				"rec",
+				"love.graphics.rectangle"
+			],
+			[
+				"exte",
+				"extendsFunc"
+			],
+			[
+				"Animation",
+				"AnimationMode"
+			],
+			[
+				"tab",
+				"tabAmount"
+			],
+			[
+				"clas",
+				"className"
+			],
+			[
+				"super",
+				"superTest"
+			],
+			[
+				"tile",
+				"tileScreenHeight"
+			],
+			[
+				"p2",
+				"p2IsFrac"
+			],
+			[
+				"p1",
+				"p1IsFrac"
+			],
+			[
+				"br",
+				"bracketIfNotOneTerm"
+			],
+			[
+				"brack",
+				"bracketIfNotOneTerm"
+			],
+			[
+				"prev",
+				"prevWasOperator"
+			],
+			[
+				"bra",
+				"bracketDepth"
+			],
+			[
+				"bracket",
+				"bracketIfNotOneTerm"
+			],
+			[
+				"matrix",
+				"matrixOutputMultilined"
+			],
+			[
+				"mult",
+				"matrixOutputMultilined"
+			],
+			[
+				"findM",
+				"findMatrixInverse"
+			],
+			[
+				"d",
+				"d"
+			],
+			[
+				"find",
+				"findMatrixDeterminant"
+			],
+			[
+				"tb",
+				"tblToStringKeys"
+			],
+			[
+				"GL",
+				"GLMakeCurrent"
+			],
+			[
+				"correct",
+				"correctSpelling"
+			],
+			[
+				"reverse",
+				"reverseMessage"
+			],
+			[
+				"pX",
+				"pXisLessThanR"
+			],
+			[
+				"pXi",
+				"pXisMoreThanR"
+			],
+			[
+				"direct",
+				"Direction"
+			],
+			[
+				"slpe",
+				"slope_down_right"
+			],
+			[
+				"sop",
+				"slope_up_left"
+			],
+			[
+				"ti",
+				"TileType"
+			],
+			[
+				"slo",
+				"slopeFurthet"
+			],
+			[
+				"chec",
+				"checkX"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Menu.moon",
+			"settings":
+			{
+				"buffer_size": 4563,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Menu.lua",
+			"settings":
+			{
+				"buffer_size": 6555,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Todo.txt",
+			"settings":
+			{
+				"buffer_size": 1961,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "FreeFlightPage.moon",
+			"settings":
+			{
+				"buffer_size": 4280,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "function loadPlayer()\n	print(\"Loading player\");\n	head.Anchored = true;\n	workspace.Camera.CameraSubject = head;\n	wait();\n	workspace.Camera.CameraType = \"Attach\";\n	workspace.Camera.CameraSubject = char.Humanoid;\n	wait();\n	workspace.Camera.CameraType = \"Track\";\n	workspace.Camera.CameraSubject = head;\n	planePreviewBase = Instance.new(\"Part\", workspace.CurrentCamera);\n	planePreviewBase.Name = \"PlanePreviewBase\";\n	planePreviewBase.Anchored = true;\n	planePreviewBase.CanCollide = true;\n	planePreviewBase.FormFactor = \"Plate\";\n	planePreviewBase.Size = Vector3.new(6, 0.4, 6);\n	planePreviewBase.Position = Vector3.new(0, 10, 0);\n	local msh = Instance.new(\"CylinderMesh\", planePreviewBase);\n	head.CFrame = planePreviewBase.CFrame;\n	head.CanCollide = false;\n	delay(0.5, function ()\n		repeat wait(0.5); until (char:findFirstChild(\"Torso\"));\n		wait(1);\n		print(\"Doing deleting\");\n		for _, a in pairs(char:GetChildren()) do\n			if (a.Name ~= \"Humanoid\") then\n				if (a.Name ~= \"Head\") then\n					if (a.Name ~= \"Torso\") then\n						a:remove();\n					end\n				end\n			end\n		end\n		char.Humanoid:Destroy();\n		char.Torso:Destroy();\n		if (#head:GetChildren() > 0) then\n			for _, a in pairs(head:GetChildren()) do\n				a:remove();\n			end\n		end\n		head.FormFactor = \"Plate\";\n		head.Size = Vector3.new(1, 0.4, 1);\n		head.CFrame = planePreviewBase.CFrame;\n		local headMesh = Instance.new(\"BlockMesh\", head);\n		headMesh.Scale = Vector3.new(0, 0, 0);\n		head.Transparency = 0.5;\n		head.BrickColor = BrickColor.new(\"Bright red\");\n		if (player.PlayerGui:findFirstChild(\"HealthGUI\")) then\n			player.PlayerGui.HealthGUI:Destroy();\n		end\n	end);\nend ",
+			"settings":
+			{
+				"buffer_size": 1613,
+				"line_ending": "Windows",
+				"name": "function loadPlayer()"
+			}
+		},
+		{
+			"file": "/C/Users/Ben/AppData/Roaming/FEZ/Debug Log.txt",
+			"settings":
+			{
+				"buffer_size": 1935,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Lua/Lua.sublime-build",
+	"command_palette":
+	{
+		"height": 311.0,
+		"selected_items":
+		[
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Add Repository"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"instll",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: If Condition"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 367.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Ben/Documents/Programming/Moonscript/RoFlightSimulator2013/FreeFlightPage.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RoFlightSimulator2013/LiverySelectPage.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RoFlightSimulator2013/MainMenuPage.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RoFlightSimulator2013/Menu.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RoFlightSimulator2013/MissionsPage.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RoFlightSimulator2013/Page.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RoFlightSimulator2013/PlaneManager.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RoFlightSimulator2013/ScrollingFrame.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RoFlightSimulator2013/ScrollingFrame.lua",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RoFlightSimulator2013/.gitattributes",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RoFlightSimulator2013/PlaneManager.lua",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RobloxFlightSimulator/FreeFlightPage.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RobloxFlightSimulator/MainMenuPage.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RobloxFlightSimulator/Menu.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RobloxFlightSimulator/MissionsPage.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RobloxFlightSimulator/Page.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RobloxFlightSimulator/ScrollingFrame.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RobloxFlightSimulator/MainMenuPage.lua",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RobloxFlightSimulator/Menu.lua",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RobloxFlightSimulator/Page.lua",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RobloxFlightSimulator/FreeFlightPage.lua",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RobloxFlightSimulator/MissionsPage.lua",
+		"/C/Users/Ben/Documents/Programming/Moonscript/RobloxFlightSimulator/menu.moon",
+		"/C/Program Files (x86)/Steam/steamapps/common/Just Cause 2/DLC/pc_00.arc",
+		"/C/Program Files (x86)/Steam/steamapps/common/Just Cause 2/archives_win32/pc0.tab",
+		"/C/Users/Ben/Documents/Coding a Better Country.txt",
+		"/C/Program Files (x86)/Steam/steamapps/common/Just Cause 2/archives_win32/pc0.arc",
+		"/C/Program Files (x86)/Steam/steamapps/common/Just Cause 2/DX10_Shaders_F.shader_bundle",
+		"/C/Users/Ben/Documents/Programming/AndroidNotes.java",
+		"/C/Users/Ben/Documents/Programming/Lua Projects/FuncOrMethod.lua",
+		"/C/Users/Ben/AppData/Roaming/Sublime Text 2/Packages/JavaScript/libs/diff_match_patch/python2/diff_match_patch.py",
+		"/C/Users/Ben/AppData/Roaming/Sublime Text 2/Packages/JavaScript/libs/jsbeautifier/tests/testjsbeautifier.py",
+		"/C/Users/Ben/AppData/Roaming/Sublime Text 2/Packages/JavaScript/libs/jsbeautifier/unpackers/javascriptobfuscator.py",
+		"/C/Users/Ben/AppData/Roaming/Sublime Text 2/Packages/JavaScript/js_formatter.py",
+		"/C/Users/Ben/AppData/Local/Temp/Rar$DI01.691/Main.sublime-menu",
+		"/C/Users/Ben/AppData/Local/Temp/Rar$DI00.019/Default (Windows).sublime-keymap",
+		"/C/Users/Ben/Documents/Programming/LOVE Projects/NotMine/Boeing 737 cockpit.rbxl",
+		"/C/Users/Ben/AppData/Roaming/Sublime Text 2/Packages/Lua/Lua.sublime-completions",
+		"/C/Users/Ben/AppData/Roaming/Sublime Text 2/Packages/Lua/Lua.tmLanguage",
+		"/C/Users/Ben/AppData/Roaming/Sublime Text 2/Packages/Lua/Comments.tmPreferences",
+		"/C/Users/Ben/AppData/Roaming/Sublime Text 2/Packages/Lua/Love.sublime-build",
+		"/C/Users/Ben/AppData/Roaming/Sublime Text 2/Packages/Lua/Lua.sublime-build",
+		"/C/Users/Ben/Documents/Programming/test.xml",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/points_of_interest.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/transit_summary.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/routes.py",
+		"/C/Users/Ben/Documents/YRS/llbio.txt",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/votecomment.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/test_feedback.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/spamdetails.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/feedback.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/details.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/date.py",
+		"/C/Users/Ben/Documents/YRS/swiftkey-blog-draft-2.html",
+		"/C/Users/Ben/AppData/Roaming/.minecraft/launcher_profiles.json",
+		"/C/Users/Ben/AppData/Roaming/.minecraft/lastlogin",
+		"/C/Users/Ben/AppData/Roaming/.minecraft/assets/READ_ME_I_AM_VERY_IMPORTANT",
+		"/C/Users/Ben/AppData/Roaming/.minecraft/versions/1.6.2/1.6.2.json",
+		"/C/Users/Ben/AppData/Roaming/.minecraft/launcher.pack.lzma",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/create.sql",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/test_routes.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/get_ratings_comments.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/ExampleGoogleData.json",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/A2B/A2BBrowseReviewsViewController.m",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/A2B/TDHUDProgressBar.m",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/A2B/A2BFirstViewController.m",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/A2B/A2BRouteCell.m",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/A2B/A2BRouteCell.h",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/WEBSITE/Site/javascript.js",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Android/A2B/src/uk/co/bluesapphiremedia/A2B/android/Test.java",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Android/A2B/src/uk/co/bluesapphiremedia/A2B/android/Communication.java",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Android/A2B/src/uk/co/bluesapphiremedia/A2B/android/Link.java",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Android/A2B/src/uk/co/bluesapphiremedia/A2B/android/HttpLoader.java",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Android/A2B/src/uk/co/bluesapphiremedia/A2B/android/Conversions.java",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Android/A2B/src/uk/co/bluesapphiremedia/A2B/android/FirstActivity.java",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Android/A2B/src/uk/co/bluesapphiremedia/A2B/android/Route.java",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Android/A2B/src/uk/co/bluesapphiremedia/A2B/android/Location.java",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/newuser.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/Sessions/test.session",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/Sessions/b67ac787-2369-4d42-b27d-31a97244d553.session",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/datetime.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/FullTestRoute.json",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/tests/test_routes.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/python datetime test.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/SmallRouteData.py",
+		"/C/Users/Ben/Documents/Programming/YRS/SmallRouteData.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/ermintrude.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/dylan.py",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/TestRoute.json",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/fred.py",
+		"/C/Users/Ben/Documents/Programming/YRS/TestRoute.json",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/#main.py#",
+		"/C/Users/Ben/AppData/Roaming/Sublime Text 2/Packages/Python/Python.sublime-build",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/main.py~",
+		"/C/Python27/NEWS.txt",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/A2B/A2BLocationSelectionViewController.h",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/A2B/A2BLocationSelectionViewController.m",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/A2B/A2BBrowseReviewsViewController.h",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/WEBSITE/Site/dist/js/bootstrap.min.js",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/Backend/main.py",
+		"/C/Users/Ben/Documents/Programming/YRS/Route.json",
+		"/C/Users/Ben/Documents/Programming/LOVE Projects/Tower of Hanoi/main.lua",
+		"/C/Users/Ben/Documents/Programming/Moonscript/dr01d3k4.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/Colour3Methods.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/DestructiveTest.moon",
+		"/C/Users/Ben/Documents/Programming/Moonscript/Multiplication.moon",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/A2B/A2BFirstViewController.h",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/A2B/A2BAppDelegate.m",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/A2B/RPAnnotation.m",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/A2B/RPAnnotation.h",
+		"/C/Users/Ben/Documents/Programming/YRS/YRS2013.git/A2B/WEBSITE/TEST.txt",
+		"/C/Program Files (x86)/PuTTY/key",
+		"/C/Users/Ben/Documents/Programming/Lua Projects/code.lua",
+		"/D/Roblox New/Airbus A350-900.rbxl",
+		"/C/Users/Ben/Documents/Programming/Lua Projects/HelloWorldFromLua.lua",
+		"/C/Users/Ben/Documents/Programming/Lua Projects/HelloWorldFromLuaReadable.lua",
+		"/D/SA_Euro_1.01_COLD/SA 1.01 changes.txt",
+		"/C/Users/Ben/Documents/Programming/LOVE Projects/NotMine/Balloons/main.lua",
+		"/C/Users/Ben/Documents/Programming/LOVE Projects/NotMine/Balloons/scoreboard.lua",
+		"/C/Users/Ben/Documents/Programming/LOVE Projects/NotMine/Balloons/entity.lua",
+		"/C/Users/Ben/Documents/Programming/LOVE Projects/NotMine/Balloons/conf.lua",
+		"/C/Users/Ben/Documents/Programming/LOVE Projects/NotMine/Balloons/player.lua",
+		"/C/Users/Ben/AppData/Local/Roblox/plugins/Dragger/dragger.lua",
+		"/D/SA_Euro_1.01_COLD/SA 1.01 FAQs.txt",
+		"/C/Users/Ben/Documents/Programming/Lua Projects/Classes/MatrixClass.lua",
+		"/C/Users/Ben/Documents/Programming/Lua Projects/Classes/ComplexNumber.lua",
+		"/C/Users/Ben/Documents/Programming/Lua Projects/Classes/Polynomial.lua",
+		"/C/Users/Ben/Documents/Programming/Lua Projects/Classes/AlgebraThing.lua"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"sectionColourTexts",
+			"--",
+			"tween",
+			"animating",
+			"animate",
+			"animateExtra",
+			"titleLogo",
+			"totalHeight",
+			"screen",
+			"jsonToString",
+			"mostImportantTravelMode",
+			"mostImportantCity",
+			"FURNICULAR",
+			"HEAVY_RAIL",
+			"cambridge",
+			"birmingham",
+			"birminghamn",
+			"birminghamnoc",
+			"birmingham",
+			"birminghamn",
+			"birmingham",
+			"map",
+			"\"\"\n",
+			"map",
+			"readGoogleJSON",
+			"map",
+			"testData",
+			"data",
+			"))\n",
+			"()))\n",
+			"1343605500",
+			"\"travel_mode\"",
+			"\"travel_mode\":",
+			"Tail",
+			"LODX",
+			"Tail",
+			"  ",
+			";",
+			";\n",
+			"map",
+			"level",
+			"makeMeta",
+			"color",
+			"  ",
+			"width",
+			"double",
+			"bool",
+			"]",
+			"[",
+			"mapWidth",
+			"mapHeight",
+			"rayPos",
+			"([0-9]),([0-9])",
+			"([0-9]),",
+			"  ",
+			"(.),(.)",
+			",([0-9])",
+			"(.),(.)",
+			",",
+			".,.",
+			"h",
+			"  ",
+			"w",
+			"auto",
+			"X",
+			"x",
+			"8",
+			"Width",
+			"right",
+			"left",
+			"x",
+			"X",
+			".",
+			"\\",
+			"print",
+			"0",
+			"Game",
+			"posVel",
+			"num6",
+			"num5",
+			"num8",
+			"num7",
+			"num8",
+			"num6",
+			"num5",
+			"s",
+			"v",
+			"b",
+			"t",
+			"r",
+			"l",
+			"checkY",
+			"checkX",
+			"checkMajor",
+			"endY",
+			"endX",
+			"startY",
+			"startX",
+			"(\\",
+			"plr",
+			"f",
+			"t",
+			"ind",
+			"val",
+			"y",
+			"ya",
+			"height",
+			"width",
+			"_with_0",
+			" +\\n",
+			"\\t+\\n",
+			" +\\n",
+			" \\n",
+			". \\n",
+			" [\\t\\n]",
+			"-- .+",
+			"tag",
+			"xml",
+			"studioSettings[\"Keyword Color\"]",
+			"0",
+			"the Vector2",
+			"else",
+			"]]",
+			"magnitude",
+			")\n",
+			"end",
+			"self",
+			"rest"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"tweening",
+			"tween",
+			"tweenExtra",
+			"title",
+			"scrollHeight",
+			"byTravelMode",
+			"viaCity",
+			"FUNICULAR",
+			"nocitycam",
+			"nocity",
+			"testJSON",
+			"\\t",
+			";\\n",
+			"isSolidMap",
+			"collideTiles",
+			"tile",
+			"makeObjMeta",
+			"Colour",
+			"	",
+			"float",
+			"boolean",
+			"}",
+			"{",
+			"pos",
+			"$1, $2",
+			"$1, ",
+			"",
+			" ",
+			"$1, $2",
+			", $2",
+			"$1, $2",
+			", --[[]]",
+			", ",
+			"screenHeight",
+			"	",
+			"\\t",
+			"Y",
+			"y",
+			"Height",
+			"bottom",
+			"top",
+			"y",
+			"Y",
+			"newPos",
+			"horzColY",
+			"horzColX",
+			"vertColY",
+			"vertColX",
+			"vertColY",
+			"horzColY",
+			"horzColX",
+			"siz",
+			"vel",
+			"minorMax",
+			"minorMin",
+			"majorMax",
+			"majorMin",
+			"checkMinor",
+			"checkMajor",
+			"endMinor",
+			"endMajor",
+			"startMinor",
+			"startMajor",
+			"player",
+			"fn",
+			"tbl",
+			"index",
+			"ind",
+			"z",
+			"za",
+			"screenHeight",
+			"screenWidth",
+			"\\n",
+			"",
+			"self",
+			"tblInsert",
+			"tblSort",
+			"coYield",
+			"coWrap",
+			"mathMin",
+			"mathmin",
+			"tblsort",
+			"tblinsert",
+			"coyield",
+			"cowrap",
+			"liq",
+			"    ",
+			"lp",
+			"mrandom",
+			"simp",
+			"mid",
+			"fCache",
+			"filename",
+			", ",
+			" ",
+			"",
+			"}, {",
+			",",
+			"{",
+			"$1",
+			"local ",
+			"",
+			"	",
+			"get32Bit",
+			"get16Bit",
+			"get8Bit",
+			"classConstructor",
+			"constructFuncDefault",
+			"constructorFunc",
+			"BASECLASS",
+			"fraction",
+			"isNumStringAlgebra",
+			"toStr",
+			"toNum",
+			"isNum",
+			"multilineOutput",
+			"_\"",
+			"setData",
+			"getData",
+			"getRow",
+			"cols",
+			"rows",
+			"tableToString",
+			"badArg",
+			"stack",
+			"charLeet",
+			"charReps",
+			"s"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Menu.moon",
+					"settings":
+					{
+						"buffer_size": 4563,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								461,
+								461
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Moonscript/Syntaxes/MoonScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Menu.lua",
+					"settings":
+					{
+						"buffer_size": 6555,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1989.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Todo.txt",
+					"settings":
+					{
+						"buffer_size": 1961,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								465,
+								465
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "FreeFlightPage.moon",
+					"settings":
+					{
+						"buffer_size": 4280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2534,
+								2534
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Moonscript/Syntaxes/MoonScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 507.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"settings":
+					{
+						"buffer_size": 1613,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								978,
+								978
+							]
+						],
+						"settings":
+						{
+							"auto_name": "function loadPlayer()",
+							"syntax": "Packages/Lua/LuaStuffOld/Lua.tmlanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/Ben/AppData/Roaming/FEZ/Debug Log.txt",
+					"settings":
+					{
+						"buffer_size": 1935,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 101.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 205.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 207.0,
+	"status_bar_visible": true
+}

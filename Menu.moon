@@ -2,7 +2,14 @@ wait 1
 while not game.Players.LocalPlayer
 	wait 0.6
 player = game.Players.LocalPlayer
+while not player.Character and not player.Character\findFirstChild "Head"
+	wait 0.1
+character = player.Character
+head = character.Head
 playerGui = player.PlayerGui
+camera = workspace.CurrentCamera
+_G.camera = camera
+_G.head = head
 
 menuScreenGui = with Instance.new "ScreenGui", playerGui do .Name = "MenuScreenGui"
 _G.menuScreenGui = menuScreenGui
@@ -14,7 +21,7 @@ _G.tweenExtra = 15
 rgbColour = (r, g, b) -> Color3.new r / 255, g / 255, b / 255
 _G.rgbColour = rgbColour
 
-backgroundWidth = 0.2
+backgroundWidth = 0.18
 menuBackgroundFrame = with Instance.new "Frame", menuScreenGui
 	.Name = "Background"
 	.Size = UDim2.new 0, 0, 1, 0
@@ -43,7 +50,7 @@ do
 
 		pcall(-> child\Destroy!) for child in *menuBackgroundFrame\GetChildren!
 
-		currentPage = with pageClass menuBackgroundFrame
+		currentPage = with pageClass!
 			\initialize!
 			\tweenIn!
 
@@ -123,7 +130,68 @@ do
 		with createButton name, text, parent, size, position, enterFunc, leaveFunc, click
 			.TextXAlignment = "Right"
 
+-- Weld and unanchor model
+do
+	weldPart = (part, base) ->
+		with Instance.new "Weld", base
+			.Part0 = base
+			.Part1 = part
+			.C0 = base.CFrame\inverse! * CFrame.new base.Position
+			.C1 = part.CFrame\inverse! * CFrame.new base.Position
+
+	weldModel = (model, base) ->
+		for child in *model\GetChildren!
+			continue if child == base
+			if child\IsA "BasePart"
+				weldPart child, base
+			elseif child\IsA "Model"
+				weldModel child, base
+	_G.weldModel = weldModel
+
+	unanchorModel = (model, base) ->
+		for child in *model\GetChildren!
+			continue if child == base
+			if child\IsA "BasePart"
+				child.Anchored = false
+			elseif child\IsA "Model"
+				unanchorModel child, base
+	_G.unanchorModel = unanchorModel
+
 _G.loadedMenu = true
+
+loadPlayer = ->
+	head.Anchored = true
+	camera.CameraSubject = head
+	wait!
+	camera.CameraType = "Attach"
+	wait!
+	camera.CameraType = "Track"
+	camera.CameraSubject = head
+	head.CanCollide = false
+
+	while not character\findFirstChild "Torso"
+		wait 0.5
+
+	deleteThings = ->
+		for obj in *character\GetChildren! 
+			unless obj.Name == "Humanoid" or obj.Name == "Head" or obj.Name == "Torso" 
+				obj\Destroy!
+		character.Humanoid\Destroy! if character\findFirstChild "Humanoid"
+		character.Torso\Destroy! if character\findFirstChild "Torso"
+		obj\Destroy for obj in *head\GetChildren!
+
+		playerGui.HealthGUI\Destroy! if playerGui\findFirstChild "HealthGUI"
+
+	deleteThings!
+
+	head.FormFactor = "Custom"
+	head.Size = Vector3.new 0.2, 0.2, 0.2
+	Instance.new("BlockMesh", head).Scale = Vector3.new 0, 0, 0
+	head.BrickColor = BrickColor.new "Bright red"
+
+	player.DescendantAdded\connect deleteThings
+
+loadPlayer!
 
 while not _G.MainMenuPage
 	wait 0.5

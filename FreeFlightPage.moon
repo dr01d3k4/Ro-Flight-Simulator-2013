@@ -1,7 +1,7 @@
 while not (_G.loadedMenu and _G.Page and _G.ScrollingFrame and _G.planeManagerLoaded)
 	wait 0.1
 
-import rgbColour, setCurrentMenuPage, createTitle, tweenTime, tweenExtra, createBackButton, getAllPlaneNames from _G
+import rgbColour, setCurrentMenuPage, createTitle, tweenTime, tweenExtra, createBackButton, getAllPlaneNames, camera, head from _G
 
 class _G.FreeFlightPage extends _G.Page
 	titleHeight = 0.09
@@ -11,19 +11,33 @@ class _G.FreeFlightPage extends _G.Page
 	scrollingFrameHeight = 0.8
 	backButtonSize = UDim2.new 0.4, 0, 0.05, 0
 	backButtonPosition = UDim2.new 0.55, 0, 0.93, 0
-	-- backButtonSize = UDim2.new(0, 66, 0, 30)
-	-- backButtonPosition = UDim2.new(0.95, -66, 1, -40)
 
 	new: (parent) =>
 		super "FreeFlightPage", parent
 		@title, @scrollingFrame, @backButton = nil, nil, nil
-		@liveryBackground = nil
+		@planePreviewBase = nil
+		@baseSize = Vector3.new 3, 0.2, 3
 
 	initialize: =>
 		return if @initialized or @cleanedUp or @tweening
 		@title\Destroy! if @title
 		@scrollingFrame\cleanUp! if @scrollingFrame
 		@backButton\Destroy! if @backButton
+		@planePreviewBase\Destroy! if @planePreviewBase
+
+		@planePreviewBase = with Instance.new "Part", camera
+			.Anchored = true
+			.BrickColor = BrickColor.new "Dark grey"
+			.FormFactor = "Custom"
+			.Size = @baseSize
+			.Name = "PlanePreviewBase"
+			.CFrame = CFrame.new 0, 20, 0
+			.TopSurface = "Smooth"
+			.BottomSurface = "Smooth"
+		Instance.new "CylinderMesh", @planePreviewBase
+
+		head.CFrame = @planePreviewBase.CFrame
+		camera.CameraType = "Watch"
 
 		@title = createTitle "Free Flight", @background, UDim2.new(1, 0, titleHeight, 0)
 
@@ -34,7 +48,6 @@ class _G.FreeFlightPage extends _G.Page
 			.BackgroundTransparency = 1
 
 		itemList = getAllPlaneNames! 
-		-- {"Plane 1", "Cessna 172", "Boeing 737-800", "Robin Something", "Boeing 747-400", "Airbus A350-900", "Boeing 757", "Lockheed Tristar", "DC11", "Concorde", "Airbus A380", "Boeing 727", "Other plane", "I need ideas", "To test", "The scrolling"}
 		table.sort itemList
 		newItemList = [" "..item for item in *itemList]
 
@@ -53,7 +66,7 @@ class _G.FreeFlightPage extends _G.Page
 		onClickFunction = (index, item, button) ->
 			realName = itemList[index]
 			return if @childPage and @childPage.planeName and @childPage.planeName == realName
-			@setChildPage _G.LiverySelectPage, @background, realName
+			@setChildPage _G.LiverySelectPage, @, realName
 
 		@scrollingFrame = _G.ScrollingFrame baseFrame, newItemList, itemButton, onClickFunction
 
@@ -71,7 +84,7 @@ class _G.FreeFlightPage extends _G.Page
 			(->
 				return false if not @initialized or @cleanedUp or @tweening
 				setCurrentMenuPage _G.MainMenuPage)
-
+			
 		@initialized = true
 
 	tweenIn: =>

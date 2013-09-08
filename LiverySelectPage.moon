@@ -1,7 +1,8 @@
 while not (_G.loadedMenu and _G.Page and _G.ScrollingFrame and _G.planeManagerLoaded)
 	wait 0.1
 
-import tweenTime, createTitle, getPlaneFromName, rgbColour from _G
+import tweenTime, createTitle, getPlaneFromName, rgbColour, weldModel, unanchorModel, camera, head from _G
+import max from math
 
 ignoredSections = {"NoColour", "GlassWindow"}
 
@@ -31,8 +32,29 @@ class _G.LiverySelectPage extends _G.Page
 		@planeNameLabel = createTitle @planeName, @background, UDim2.new(1, 0, planeNameHeight, 0), UDim2.new(0, 0, titleHeight, 0)
 		@planeNameLabel.Name = "PlaneNameTitle"
 
-		plane = getPlaneFromName @planeName
-		sectionNames = [section.Name for section in *plane\GetChildren! when section\IsA("Model") and not isIgnoredSection(section.Name)]
+		@planeModel = getPlaneFromName(@planeName)\Clone!
+
+		@planeModel.Parent = camera
+
+		engine = @planeModel.Engine
+		engine.Anchored = true
+		planePreviewBase = @parentPage.planePreviewBase
+
+		baseSize = max(engine.Size.x, engine.Size.z) * 2
+		if baseSize < @parentPage.baseSize.x
+			baseSize = @parentPage.baseSize.x
+		planePreviewBase.Size = Vector3.new baseSize, planePreviewBase.Size.y, baseSize
+
+		weldModel @planeModel, engine
+		unanchorModel @planeModel, engine
+
+		engine.Anchored = false
+		engine.Transparency = 1
+		engine.CFrame = CFrame.new planePreviewBase.Position + Vector3.new 0, @planeModel.Engine.Size.y * 2, 0
+		head.CFrame = engine.CFrame
+		camera.CameraType = "Watch"
+
+		sectionNames = [section.Name for section in *@planeModel\GetChildren! when section\IsA("Model") and not isIgnoredSection(section.Name)]
 		table.sort sectionNames
 		
 		colourSelectorHeight = 0.03
@@ -43,7 +65,7 @@ class _G.LiverySelectPage extends _G.Page
 		@sectionColourTexts = { }
 
 		for sectionName in *sectionNames
-			section = plane[sectionName]
+			section = @planeModel[sectionName]
 			colour = nil
 			for part in *section\GetChildren!
 				if part\IsA "BasePart"
@@ -89,15 +111,18 @@ class _G.LiverySelectPage extends _G.Page
 					if .Text\match textMatch
 						r, g, b = .Text\match textMatch
 						r, g, b = tonumber(r), tonumber(g), tonumber(b)
+
 						if not r or not g or not b
 							setTextFromColour!
-						newColour = nil
+
 						for part in *section\GetChildren!
 							if part\IsA "BasePart"
 								part.BrickColor = BrickColor.new r / 255, g / 255, b / 255
 								colour = part.BrickColor
-						if newColour
-							colour = newColour
+								for obj in *part\GetChildren!
+									if obj.ClassName\match "Mesh$"
+										obj.VertexColor = Vector3.new colour.r, colour.g, colour.b
+
 						setTextFromColour!
 					else
 						setTextFromColour!
@@ -169,5 +194,6 @@ class _G.LiverySelectPage extends _G.Page
 		@title\Destroy! if @title
 		@planeNameLabel\Destroy! if @planeNameLabel
 		section\Destroy! for section in *@sectionColourTexts
+		@planeModel\Destroy! if @planeModel
 		@background\Destroy! if @background
 		@cleanedUp = true

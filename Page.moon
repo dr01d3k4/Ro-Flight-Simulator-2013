@@ -4,19 +4,21 @@ while not _G.loadedMenu
 import menuScreenGui, menuBackgroundFrame, defaultBackgroundFrame, waitForPageCleanUp from _G
 
 class _G.Page
-	new: (name, parent) =>
+	new: (name, parentPage) =>
 		assert menuScreenGui, "Attempt to create #{name} before creating menuScreenGui"
+		@parentPage = parentPage if parentPage
 		@background\Destroy! if @background
 		@background = with defaultBackgroundFrame\Clone!
 			.Name = name
-			.Parent = parent
-			.Size = UDim2.new 1, 0, 1, 0
-			if parent == menuBackgroundFrame
-				.Position = UDim2.new 0, 0, 0, 0
-				.BackgroundTransparency = 1
-			else
+			if parentPage and parentPage.background
+				.Parent = parentPage.background
 				.Position = UDim2.new 1, 0, 0, 0
 				.BackgroundTransparency = menuBackgroundFrame.BackgroundTransparency
+			else
+				.Parent = menuBackgroundFrame
+				.Position = UDim2.new 0, 0, 0, 0
+				.BackgroundTransparency = 1
+			.Size = UDim2.new 1, 0, 1, 0
 		@initialized = false
 		@cleanedUp = false
 		@tweening = false

@@ -1,8 +1,7 @@
 Items marked with * are important (required to be done first)
 
 General:
--* Remove character parts, sort out head
--* Move camera somewhere
+- Move camera somewhere
 
 - Build an airport
 - Scale down current plane and add engine block etc
@@ -15,7 +14,6 @@ Main menu:
 Free flight:
 	Picking plane:
 	-* Move the camera away from the map
-	-* Copy the selected plane (use local parts?) so player can see what his colour scheme is
 	- Add randomize button for:
 		- Picking random plane
 		- Randomizing each colour
