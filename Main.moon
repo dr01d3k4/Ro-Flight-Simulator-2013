@@ -8,58 +8,54 @@ character = player.Character
 head = character.Head
 playerGui = player.PlayerGui
 camera = workspace.CurrentCamera
+
 _G.camera = camera
 _G.head = head
 
-menuScreenGui = with Instance.new "ScreenGui", playerGui do .Name = "MenuScreenGui"
-_G.menuScreenGui = menuScreenGui
+menu = { }
 
-tweenTime = 0.4
-_G.tweenTime = tweenTime
-_G.tweenExtra = 15
+menu.menuScreenGui = with Instance.new "ScreenGui", playerGui do .Name = "MenuScreenGui"
 
-rgbColour = (r, g, b) -> Color3.new r / 255, g / 255, b / 255
-_G.rgbColour = rgbColour
+menu.tweenTime = 0.4
+menu.tweenExtra = 15
 
-backgroundWidth = 0.18
-menuBackgroundFrame = with Instance.new "Frame", menuScreenGui
+colour = { }
+colour.rgbToColor3 = (r, g, b) -> Color3.new r / 255, g / 255, b / 255
+
+menu.backgroundWidth = 0.18
+menu.menuBackgroundFrame = with Instance.new "Frame", menu.menuScreenGui
 	.Name = "Background"
 	.Size = UDim2.new 0, 0, 1, 0
 	.Position = UDim2.new 0, 0, 0, 0
-	.BackgroundColor3 = rgbColour 32, 32, 32
+	.BackgroundColor3 = colour.rgbToColor3 32, 32, 32
 	.BackgroundTransparency = 0.3
-_G.menuBackgroundFrame = menuBackgroundFrame
-_G.defaultBackgroundFrame = with menuBackgroundFrame\Clone! do .Size = UDim2.new backgroundWidth, 0, 1, 0
+menu.defaultBackgroundFrame = with menu.menuBackgroundFrame\Clone! do .Size = UDim2.new menu.backgroundWidth, 0, 1, 0
 
 
 -- Current page
-local setCurrentMenuPage
 do
 	currentPage = nil
 
-	waitForPageCleanUp = (page) ->
+	menu.waitForPageCleanUp = (page) ->
 		return if not page or page.cleanedUp
 		while not page.cleanedUp
 			page\cleanUp!
 			wait 0.1 if not page.cleanedUp
 
-	setCurrentMenuPage = (pageClass) ->
+	menu.setCurrentMenuPage = (pageClass) ->
 		if currentPage
 			currentPage\tweenOut!
-			waitForPageCleanUp currentPage
+			menu.waitForPageCleanUp currentPage
 
-		pcall(-> child\Destroy!) for child in *menuBackgroundFrame\GetChildren!
+		pcall(-> child\Destroy!) for child in *menu.menuBackgroundFrame\GetChildren!
 
 		currentPage = with pageClass!
 			\initialize!
 			\tweenIn!
 
-	_G.waitForPageCleanUp = waitForPageCleanUp
-	_G.setCurrentMenuPage = setCurrentMenuPage
-
 -- Create title
 do
-	_G.createTitle = (text, parent, size, position = UDim2.new(0, 0, 0, 0)) ->
+	menu.createTitle = (text, parent, size, position = UDim2.new(0, 0, 0, 0)) ->
 		with Instance.new "TextLabel", parent
 			.Name = "Title"
 			.Size = size
@@ -69,52 +65,50 @@ do
 			.Text = text
 			.TextScaled = true
 			.TextWrapped = true
-			.TextColor3 = rgbColour 255, 255, 255
+			.TextColor3 = colour.rgbToColor3 255, 255, 255
 			.TextYAlignment = "Top"
 
 -- Create button
-local createButton
 do
-	buttonBorder = rgbColour 170, 0, 0
-	buttonHoverBorder = rgbColour 120, 0, 0
+	colour.buttonBorder = colour.rgbToColor3 170, 0, 0
+	colour.buttonHoverBorder = colour.rgbToColor3 120, 0, 0
 	buttonHoverOffset = 2
 
-	createButton = (name, text, parent, size, position, enter, leave, click) ->
+	menu.createButton = (name, text, parent, size, position, enter, leave, click) ->
 		button = Instance.new "TextButton", parent
 		with button
 			.Name = name
 			.Size = size
 			.Position = position
-			.BackgroundColor3 = rgbColour 0, 0, 0
+			.BackgroundColor3 = colour.rgbToColor3 0, 0, 0
 			.BackgroundTransparency = 0
-			.BorderColor3 = buttonBorder
+			.BorderColor3 = colour.buttonBorder
 			.BorderSizePixel = 1
 			.Font = "SourceSans"
 			.Text = text
-			.TextColor3 = rgbColour 255, 255, 255
+			.TextColor3 = colour.rgbToColor3 255, 255, 255
 			.TextScaled = true
 			.TextWrapped = true
 			.TextXAlignment = "Left"
 
 			.MouseEnter\connect ->
 				if enter button
-					.BorderColor3 = buttonHoverBorder
+					.BorderColor3 = colour.buttonHoverBorder
 					.BorderSizePixel = 2
 					.Position = UDim2.new position.X.Scale, position.X.Offset + buttonHoverOffset, position.Y.Scale, position.Y.Offset + buttonHoverOffset
 
 			.MouseLeave\connect ->
 				if leave button
-					.BorderColor3 = buttonBorder
+					.BorderColor3 = colour.buttonBorder
 					.BorderSizePixel = 1
 					.Position = position
 
 			.MouseButton1Click\connect ->
 				click button
-	_G.createButton = createButton
 
 -- Create back buttion
 do
-	_G.createBackButton = (name, text, parent, size, position, enter, leave, click) ->
+	menu.createBackButton = (name, text, parent, size, position, enter, leave, click) ->
 		enterFunc = (button)->
 			if enter button
 				button.Text = "< "..text
@@ -127,37 +121,12 @@ do
 				return true
 			else
 				return false
-		with createButton name, text, parent, size, position, enterFunc, leaveFunc, click
+		with menu.createButton name, text, parent, size, position, enterFunc, leaveFunc, click
 			.TextXAlignment = "Right"
 
--- Weld and unanchor model
-do
-	weldPart = (part, base) ->
-		with Instance.new "Weld", base
-			.Part0 = base
-			.Part1 = part
-			.C0 = base.CFrame\inverse! * CFrame.new base.Position
-			.C1 = part.CFrame\inverse! * CFrame.new base.Position
 
-	weldModel = (model, base) ->
-		for child in *model\GetChildren!
-			continue if child == base
-			if child\IsA "BasePart"
-				weldPart child, base
-			elseif child\IsA "Model"
-				weldModel child, base
-	_G.weldModel = weldModel
-
-	unanchorModel = (model, base) ->
-		for child in *model\GetChildren!
-			continue if child == base
-			if child\IsA "BasePart"
-				child.Anchored = false
-			elseif child\IsA "Model"
-				unanchorModel child, base
-	_G.unanchorModel = unanchorModel
-
-_G.loadedMenu = true
+_G.colour = colour
+_G.menu = menu
 
 loadPlayer = ->
 	head.Anchored = true
@@ -193,9 +162,9 @@ loadPlayer = ->
 
 loadPlayer!
 
-while not _G.MainMenuPage
+while not _G.menu.page and not _G.menu.page.MainMenuPage
 	wait 0.5
 
-menuBackgroundFrame\TweenSize UDim2.new(backgroundWidth, 0, 1, 0), "In", "Quad", tweenTime, true
-wait tweenTime
-setCurrentMenuPage _G.MainMenuPage
+menu.menuBackgroundFrame\TweenSize UDim2.new(menu.backgroundWidth, 0, 1, 0), "In", "Quad", menu.tweenTime, true
+wait menu.tweenTime
+menu.setCurrentMenuPage _G.menu.page.MainMenuPage

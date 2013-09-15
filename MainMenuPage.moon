@@ -1,9 +1,19 @@
-while not (_G.loadedMenu and _G.Page)
+while not (_G.menu and _G.menu.page and _G.menu.page.Page)
 	wait 0.1
 
-import rgbColour, setCurrentMenuPage, createTitle, tweenTime, createButton, tweenExtra from _G
+import setCurrentMenuPage, createTitle, tweenTime, createButton, tweenExtra from _G.menu
 
-class _G.MainMenuPage extends _G.Page
+pageButtonMapping = {
+	{"Free Flight", "ChoosePlanePage"},
+	{"Missions", "MissionsPage"},
+	{"ATC", "ATCPage"},
+	{"Passenger", "PassengerPage"},
+	{"Help", "HelpPage"},
+	{"Options", "OptionsPage"},
+	{"About", "AboutPage"}
+}
+
+class _G.menu.page.MainMenuPage extends _G.menu.page.Page
 	titleHeight = 0.275
 	buttonWidth = 0.8
 	buttonLeft = (1 - buttonWidth) / 2
@@ -20,28 +30,30 @@ class _G.MainMenuPage extends _G.Page
 		@title = createTitle "Ro-Flight Simulator 2013", @background, UDim2.new(1, 0, titleHeight, 0)
 
 		@buttonObjects = { }
-		buttonNames = [" - "..name for name in *{"Free Flight", "Missions", "ATC", "Passenger", "Help", "Options", "About"}]
+		-- buttonNames = [" - "..page[1] for page in *pageButtonMapping]
 		buttonHeight = 0.05
 		buttonSpacing = 0.03
 
 		yPos = titleHeight + buttonSpacing
-		for i = 1, #buttonNames
+		for i = 1, #pageButtonMapping
 			currentPos = yPos
-			cleanName = buttonNames[i]\gsub "%W", ""
+			pageName = pageButtonMapping[i][1]
+			buttonName = " - "..pageName
+			cleanName = pageName\gsub "%W", ""
 
-			@buttonObjects[#@buttonObjects + 1] = createButton cleanName, buttonNames[i], @background, 
+			@buttonObjects[#@buttonObjects + 1] = createButton cleanName, buttonName, @background, 
 				UDim2.new(buttonWidth, 0, buttonHeight, 0), UDim2.new(buttonLeft, 0, yPos, 0),
 				((button) ->
 					return false if not @initialized or @cleanedUp or @tweening
-					button.Text = buttonNames[i].." >"
+					button.Text = buttonName.." >"
 					return true),
 				((button) ->
 					return false if not @initialized or @cleanedUp or @tweening
-					button.Text = buttonNames[i]
+					button.Text = buttonName
 					return true),
 				(->
 					return if not @initialized or @cleanedUp or @tweening
-					@menuButtonClicked cleanName)
+					@menuButtonClicked pageName)
 
 			yPos += buttonHeight + buttonSpacing
 
@@ -76,10 +88,16 @@ class _G.MainMenuPage extends _G.Page
 	menuButtonClicked: (button) =>
 		return if not @initialized or @cleanedUp or @tweening
 
-		pageName = button.."Page"
-		if not _G[pageName]
+		pageName = "MainMenuPage"
+
+		for page in *pageButtonMapping
+			if page[1] == button and _G.menu.page[page[2]]
+				pageName = page[2]
+
+		if not _G.menu.page[pageName]
 			pageName = "MainMenuPage"
-		setCurrentMenuPage _G[pageName]
+			
+		setCurrentMenuPage _G.menu.page[pageName]
 
 	cleanUp: =>
 		return if not @initialized or @cleanedUp or @tweening

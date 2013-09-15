@@ -1,9 +1,12 @@
-while not (_G.loadedMenu and _G.Page and _G.ScrollingFrame and _G.planeManagerLoaded)
+while not (_G.menu and _G.menu.page and _G.menu.page.Page and _G.menu.page.ChooseLiveryPage and _G.ScrollingFrame and _G.planeManager and _G.colour)
 	wait 0.1
 
-import rgbColour, setCurrentMenuPage, createTitle, tweenTime, tweenExtra, createBackButton, getAllPlaneNames, camera, head from _G
+import camera, head from _G
+import rgbToColor3 from _G.colour
+import setCurrentMenuPage, createTitle, tweenTime, tweenExtra, createBackButton from _G.menu
+import getAllPlaneNames from _G.planeManager
 
-class _G.FreeFlightPage extends _G.Page
+class _G.menu.page.ChoosePlanePage extends _G.menu.page.Page
 	titleHeight = 0.09
 	spacing = 0.02
 	scrollingFrameTop = titleHeight + spacing
@@ -13,7 +16,7 @@ class _G.FreeFlightPage extends _G.Page
 	backButtonPosition = UDim2.new 0.55, 0, 0.93, 0
 
 	new: (parent) =>
-		super "FreeFlightPage", parent
+		super "ChoosePlanePage", parent
 		@title, @scrollingFrame, @backButton = nil, nil, nil
 		@planePreviewBase = nil
 		@baseSize = Vector3.new 3, 0.2, 3
@@ -39,7 +42,7 @@ class _G.FreeFlightPage extends _G.Page
 		head.CFrame = @planePreviewBase.CFrame
 		camera.CameraType = "Watch"
 
-		@title = createTitle "Free Flight", @background, UDim2.new(1, 0, titleHeight, 0)
+		@title = createTitle "Choose Plane", @background, UDim2.new(1, 0, titleHeight, 0)
 
 		baseFrame = with Instance.new "Frame", @background
 			.Name = "ScrollingFrame"
@@ -59,14 +62,14 @@ class _G.FreeFlightPage extends _G.Page
 			.TextXAlignment = "Left"
 			.Font = "Arial"
 			.FontSize = "Size14"
-			.TextColor3 = rgbColour 255, 255, 255
-			.BackgroundColor3 = rgbColour 32, 32, 32
-			.BorderColor3 = rgbColour 255, 255, 255
+			.TextColor3 = rgbToColor3 255, 255, 255
+			.BackgroundColor3 = rgbToColor3 32, 32, 32
+			.BorderColor3 = rgbToColor3 255, 255, 255
 
 		onClickFunction = (index, item, button) ->
 			realName = itemList[index]
 			return if @childPage and @childPage.planeName and @childPage.planeName == realName
-			@setChildPage _G.LiverySelectPage, @, realName
+			@setChildPage _G.menu.page.ChooseLiveryPage, @, realName
 
 		@scrollingFrame = _G.ScrollingFrame baseFrame, newItemList, itemButton, onClickFunction
 
@@ -83,7 +86,7 @@ class _G.FreeFlightPage extends _G.Page
 			(-> return false if not @initialized or @cleanedUp or @tweening else true),
 			(->
 				return false if not @initialized or @cleanedUp or @tweening
-				setCurrentMenuPage _G.MainMenuPage)
+				setCurrentMenuPage _G.menu.page.MainMenuPage)
 			
 		@initialized = true
 

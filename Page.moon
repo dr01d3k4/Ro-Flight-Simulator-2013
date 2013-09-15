@@ -1,9 +1,11 @@
-while not _G.loadedMenu
+while not _G.menu
 	wait 0.1
 
-import menuScreenGui, menuBackgroundFrame, defaultBackgroundFrame, waitForPageCleanUp from _G
+import menuScreenGui, menuBackgroundFrame, defaultBackgroundFrame, waitForPageCleanUp from _G.menu
 
-class _G.Page
+_G.menu.page = { }
+
+class _G.menu.page.Page
 	new: (name, parentPage) =>
 		assert menuScreenGui, "Attempt to create #{name} before creating menuScreenGui"
 		@parentPage = parentPage if parentPage

@@ -1,4 +1,7 @@
-rgbColour = (r, g, b) -> Color3.new r / 255, g / 255, b / 255
+while not _G.colour
+	wait 0.1
+
+import rgbToColor3 from _G.colour
 
 class _G.ScrollingFrame
 	new: (baseFrame, itemList, itemButton, onClickFunction) =>
@@ -18,8 +21,8 @@ class _G.ScrollingFrame
 			.Position = UDim2.new(0, 0, 0, 0)
 			.Size = UDim2.new(1 - @scrollBarWidth, 0, 1, 0)
 			.BackgroundTransparency = 0
-			.BackgroundColor3 = Color3.new 0, 0, 0
-			.BorderColor3 = Color3.new 1, 1, 1
+			.BackgroundColor3 = rgbToColor3 0, 0, 0
+			.BorderColor3 = rgbToColor3 255, 255, 255
 			.ClipsDescendants = true
 
 		@scrollFrame = with Instance.new "Frame", @baseFrame
@@ -27,8 +30,8 @@ class _G.ScrollingFrame
 			.Position = UDim2.new(1 - @scrollBarWidth, 0, 0, 0)
 			.Size = UDim2.new(@scrollBarWidth, 0, 1, 0)
 			.BackgroundTransparency = 0
-			.BackgroundColor3 = Color3.new 0, 0, 0
-			.BorderColor3 = Color3.new 1, 1, 1
+			.BackgroundColor3 = rgbToColor3 0, 0, 0
+			.BorderColor3 = rgbToColor3 255, 255, 255
 			.ClipsDescendants = true
 
 		for i = 1, #itemList
@@ -67,8 +70,8 @@ class _G.ScrollingFrame
 			.Size = UDim2.new 1, 0, 1 - (@scrollButtonHeight * 2), 0
 			.Position = UDim2.new 0, 0, @scrollButtonHeight, 0
 			.BackgroundTransparency = 0
-			.BackgroundColor3 = Color3.new 0, 0, 0
-			.BorderColor3 = Color3.new 1, 1, 1
+			.BackgroundColor3 = rgbToColor3 0, 0, 0
+			.BorderColor3 = rgbToColor3 255, 255, 255
 			.ClipsDescendants = true
 
 		scrollBarDragging = false
@@ -77,13 +80,13 @@ class _G.ScrollingFrame
 			.Name = "ScrollBar"
 			.Size = UDim2.new 1, 0, @scrollBarHeight, 0
 			.Position = UDim2.new 0, 0, 0, 0
-			.BorderColor3 = Color3.new 1, 1, 1
+			.BorderColor3 = rgbToColor3 255, 255, 255
 			.Text = "_\n_\n_"
-			.TextColor3 = rgbColour 128, 128, 128
+			.TextColor3 = rgbToColor3 128, 128, 128
 			.TextStrokeTransparency = 0
 			.Font = "ArialBold"
 			.FontSize = "Size12"
-			.TextStrokeColor3 = rgbColour 100, 100, 100
+			.TextStrokeColor3 = rgbToColor3 100, 100, 100
 
 			prevY = 0
 
@@ -97,7 +100,6 @@ class _G.ScrollingFrame
 				return unless @totalHeight > @visibleAmount
 				scrollBarDragging = false
 				@updateScrollList!
-
 
 			mouse = game.Players.LocalPlayer\GetMouse!
 

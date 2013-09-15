@@ -1,7 +1,10 @@
-while not (_G.loadedMenu and _G.Page and _G.ScrollingFrame and _G.planeManagerLoaded)
+while not (_G.menu and _G.menu.page and _G.menu.page.Page and _G.ScrollingFrame and _G.planeManager and _G.colour)
 	wait 0.1
 
-import tweenTime, createTitle, getPlaneFromName, rgbColour, weldModel, unanchorModel, camera, head from _G
+import camera, head from _G
+import tweenTime, createTitle from _G.menu
+import getPlaneFromName, weldPlane, unanchorPlane from _G.planeManager
+import rgbToColor3 from _G.colour
 import max from math
 
 ignoredSections = {"NoColour", "GlassWindow"}
@@ -12,13 +15,13 @@ isIgnoredSection = (section) ->
 			return true
 	return false
 
-class _G.LiverySelectPage extends _G.Page
+class _G.menu.page.ChooseLiveryPage extends _G.menu.page.Page
 	titleHeight = 0.09
 	planeNameHeight = 0.05
 	colourSelectorLeft = 0.05
 
 	new: (parent, planeName) =>
-		super "LiverySelect", parent
+		super "ChooseLiveryPage", parent
 		@planeName = planeName
 		@title, @planeNameLabel, @sectionColourTexts = nil, nil, { }
 
@@ -45,8 +48,8 @@ class _G.LiverySelectPage extends _G.Page
 			baseSize = @parentPage.baseSize.x
 		planePreviewBase.Size = Vector3.new baseSize, planePreviewBase.Size.y, baseSize
 
-		weldModel @planeModel, engine
-		unanchorModel @planeModel, engine
+		weldPlane @planeModel, engine
+		unanchorPlane @planeModel, engine
 
 		engine.Anchored = false
 		engine.Transparency = 1
@@ -84,7 +87,7 @@ class _G.LiverySelectPage extends _G.Page
 				.Text = sectionName..": "
 				.Position = UDim2.new 0, 0, 0, 0
 				.Size = UDim2.new colourSelectorLeftWidth, 0, 1, 0
-				.TextColor3 = rgbColour 255, 255, 255
+				.TextColor3 = rgbToColor3 255, 255, 255
 				.BackgroundTransparency = 1
 				.Font = "SourceSansBold"
 				.FontSize = "Size18"

@@ -2,6 +2,7 @@ Items marked with * are important (required to be done first)
 
 General:
 - Move camera somewhere
+- Move code into namespaces
 
 - Build an airport
 - Scale down current plane and add engine block etc
