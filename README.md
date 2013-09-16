@@ -1,4 +1,4 @@
-RoFlightSimulator2013
+Ro-Flight Simulator 2013
 =====================
 
-RFS 2013, written in Moonscript.
+The source code to RFS 2013. Written in Moonscript.
